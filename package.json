@@ -1,0 +1,19 @@
+{
+  "name": "try-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --inspect -e js,html index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mongoose": "^5.3.14",
+    "mustache-express": "^1.2.8",
+    "nodemon": "^1.18.7",
+    "pug": "^2.0.3"
+  }
+}
