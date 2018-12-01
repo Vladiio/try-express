@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/try_node');
+mongoose.connect(
+  'mongodb://localhost/try_node',
+  { useNewUrlParser: true }
+);
 
 const articleSchema = new mongoose.Schema({
   title: String,
