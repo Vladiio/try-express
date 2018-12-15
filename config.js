@@ -4,8 +4,9 @@ const APP_PORT = 3000;
 
 const routes = {
   HOME: '/',
-  CREATE_ARTICLE: '/create',
-  ARTICLE: '/article/:id/'
+  ARTICLE: '/article/:id/',
+  CREATE_ARTICLE: '/article/create',
+  UPDATE_ARTICLE: '/article/:id/update'
 };
 
 module.exports = {

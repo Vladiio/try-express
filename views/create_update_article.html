@@ -1,12 +1,12 @@
 {{> base}}
 <div class="p-4">
   <div class="w-50 m-auto">
-    <h1>Create article</h1>
+    <h1>{{ pageTitle }}</h1>
     {{ #errors }}
     <p>{{ param }}: {{ msg }}</p>
     {{ /errors}}
     <form
-      action="/create"
+      action="{{ formActionUrl }}"
       method="post"
       class="d-flex flex-column"
     >
@@ -16,10 +16,11 @@
         class="p-1"
         placeholder="Title"
         class="mb-2"
+        value="{{ article.title }}"
       />
       <label class="mt-3" for="text"> Content </label>
-      <textarea id="text" rows="10" name="text"></textarea>
-      <button type="submit" class="mt-1">Create</button>
+      <textarea id="text" rows="10" name="text">{{ article.text }}</textarea>
+      <button type="submit" class="mt-1">Submit</button>
     </form>
   </div>
 </div>
