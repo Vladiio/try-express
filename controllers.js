@@ -75,11 +75,29 @@ async function updateArticleHandler(req, res) {
   return res.redirect(routes.ARTICLE.replace(':id', id));
 }
 
+function signinPage(req, res) {
+  res.render('signin.html');
+}
+
+async function signinHandler(req, res) {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.render('signin.html', {
+      errors: errors.array()
+    });
+  }
+  const { username, password } = req.body;
+  console.log(username, password);
+  return res.redirect('/');
+}
+
 module.exports = {
   home,
   createArticlePage,
   createArticleHandler,
   articleDetail,
   updateArticlePage,
-  updateArticleHandler
+  updateArticleHandler,
+  signinPage,
+  signinHandler
 };

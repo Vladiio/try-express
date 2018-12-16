@@ -9,9 +9,14 @@ const {
   createArticlePage,
   updateArticlePage,
   articleDetail,
-  updateArticleHandler
+  updateArticleHandler,
+  signinHandler,
+  signinPage
 } = require('./controllers');
-const { createArticleValidators } = require('./validators');
+const {
+  createArticleValidators,
+  signinValidators
+} = require('./validators');
 const { Article } = require('./models');
 const { APP_PORT, routes } = require('./config');
 
@@ -22,6 +27,7 @@ app.get(routes.HOME, home);
 app.get(routes.UPDATE_ARTICLE, updateArticlePage);
 app.get(routes.CREATE_ARTICLE, createArticlePage);
 app.get(routes.ARTICLE, articleDetail);
+app.get(routes.SIGNIN, signinPage);
 
 app.post(
   routes.CREATE_ARTICLE,
@@ -33,5 +39,7 @@ app.post(
   createArticleValidators,
   updateArticleHandler
 );
+
+app.post(routes.SIGNIN, signinValidators, signinHandler);
 
 app.listen(APP_PORT);
