@@ -3,6 +3,7 @@ const mustachExpress = require('mustache-express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const { TEMPLATES_DIR } = require('./config');
+const { router } = require('./router');
 
 function setupApp() {
   const app = express();
@@ -18,6 +19,8 @@ function setupApp() {
 
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
+
+  app.use('/', router);
 
   mongoose.connect(
     'mongodb://localhost/try_node',
