@@ -3,7 +3,7 @@ const {
   validationResult
 } = require('express-validator/check');
 const { routes } = require('./config');
-const { Article } = require('./models');
+const { Article, User } = require('./models');
 
 function home(req, res) {
   Article.find((err, articles) => {
@@ -87,7 +87,8 @@ async function signinHandler(req, res) {
     });
   }
   const { username, password } = req.body;
-  console.log(username, password);
+  const user = await User.create({ username, password });
+  console.log(user.username, user.password);
   return res.redirect('/');
 }
 
