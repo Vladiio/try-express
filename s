@@ -15,12 +15,12 @@
 [31m-  updateArticlePage,[m
 [31m-  articleDetail,[m
 [31m-  updateArticleHandler,[m
-[31m-  signinHandler,[m
-[31m-  signinPage[m
+[31m-  signupHandler,[m
+[31m-  signupPage[m
 [31m-} = require('./controllers');[m
 [31m-const {[m
 [31m-  createArticleValidators,[m
-[31m-  signinValidators[m
+[31m-  signupValidators[m
 [31m-} = require('./validators');[m
 [31m-const { Article } = require('./models');[m
 [32m+[m
@@ -33,7 +33,7 @@
 [31m-app.get(routes.UPDATE_ARTICLE, updateArticlePage);[m
 [31m-app.get(routes.CREATE_ARTICLE, createArticlePage);[m
 [31m-app.get(routes.ARTICLE, articleDetail);[m
-[31m-app.get(routes.SIGNIN, signinPage);[m
+[31m-app.get(routes.signup, signupPage);[m
 [31m-[m
 [31m-app.post([m
 [31m-  routes.CREATE_ARTICLE,[m
@@ -46,7 +46,7 @@
 [31m-  updateArticleHandler[m
 [31m-);[m
 [31m-[m
-[31m-app.post(routes.SIGNIN, signinValidators, signinHandler);[m
+[31m-app.post(routes.signup, signupValidators, signupHandler);[m
 [31m-[m
  app.listen(APP_PORT);[m
 [1mdiff --git a/setupApp.js b/setupApp.js[m
@@ -70,14 +70,14 @@
    mongoose.connect([m
      'mongodb://localhost/try_node',[m
      { useNewUrlParser: true }[m
-[1mdiff --git a/views/signin.html b/views/signin.html[m
+[1mdiff --git a/views/signup.html b/views/signup.html[m
 [1mindex eed4117..70656d9 100644[m
-[1m--- a/views/signin.html[m
-[1m+++ b/views/signin.html[m
+[1m--- a/views/signup.html[m
+[1m+++ b/views/signup.html[m
 [36m@@ -2,6 +2,7 @@[m
  [m
  <div class="w-50 m-auto text-center">[m
-   <form action="/users/signin" method="post" class="mt-5">[m
+   <form action="/users/signup" method="post" class="mt-5">[m
 [32m+[m[32m    <h4>Sign in</h4>[m
      {{# errors }}[m
      <p>{{ param }}: {{ msg }}</p>[m

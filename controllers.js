@@ -75,20 +75,19 @@ async function updateArticleHandler(req, res) {
   return res.redirect(routes.ARTICLE.replace(':id', id));
 }
 
-function signinPage(req, res) {
-  res.render('signin.html');
+function signupPage(req, res) {
+  res.render('signup.html');
 }
 
-async function signinHandler(req, res) {
+async function signupHandler(req, res) {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res.render('signin.html', {
+    return res.render('signup.html', {
       errors: errors.array()
     });
   }
   const { username, password } = req.body;
   const user = await User.create({ username, password });
-  console.log(user.username, user.password);
   return res.redirect('/');
 }
 
@@ -99,6 +98,6 @@ module.exports = {
   articleDetail,
   updateArticlePage,
   updateArticleHandler,
-  signinPage,
-  signinHandler
+  signupPage,
+  signupHandler
 };

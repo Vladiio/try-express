@@ -2,8 +2,28 @@ const express = require('express');
 const mustachExpress = require('mustache-express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const passport = require('passport');
+const LocalStrategy = require('passport-local');
 const { TEMPLATES_DIR } = require('./config');
 const { router } = require('./router');
+const { User } = require('./models');
+
+function setupPassort() {
+  passport.use(
+    new LocalStrategy(async function(
+      username,
+      password,
+      done
+    ) {
+      let user = await User.findOne({ username });
+      if (!user.verifyPassword(passport)) {
+        user = false;
+      }
+      return done(null, user);
+    })
+  );
+  return passport;
+}
 
 function setupApp() {
   const app = express();

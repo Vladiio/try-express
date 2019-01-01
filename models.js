@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 
 const articleSchema = new mongoose.Schema({
   title: String,
@@ -13,8 +14,10 @@ const userSchema = new mongoose.Schema({
   email: String
 });
 
-userSchema.pre('save', next => {
-  // TODO encrypt user password
+userSchema.pre('save', async function(next) {
+  const saltRounds = 10;
+  const hash = await bcrypt.hash(this.password, saltRounds);
+  this.password = hash;
   next();
 });
 

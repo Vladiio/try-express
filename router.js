@@ -1,6 +1,6 @@
 const {
   createArticleValidators,
-  signinValidators
+  signupValidators
 } = require('./validators');
 const { Router } = require('express');
 const { routes } = require('./config');
@@ -11,8 +11,8 @@ const {
   updateArticlePage,
   articleDetail,
   updateArticleHandler,
-  signinHandler,
-  signinPage
+  signupHandler,
+  signupPage
 } = require('./controllers');
 
 const router = Router();
@@ -21,7 +21,7 @@ router.get(routes.HOME, home);
 router.get(routes.UPDATE_ARTICLE, updateArticlePage);
 router.get(routes.CREATE_ARTICLE, createArticlePage);
 router.get(routes.ARTICLE, articleDetail);
-router.get(routes.SIGNIN, signinPage);
+router.get(routes.signup, signupPage);
 
 router.post(
   routes.CREATE_ARTICLE,
@@ -34,6 +34,6 @@ router.post(
   updateArticleHandler
 );
 
-router.post(routes.SIGNIN, signinValidators, signinHandler);
+router.post(routes.signup, signupValidators, signupHandler);
 
 module.exports = { router };

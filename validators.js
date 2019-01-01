@@ -9,7 +9,7 @@ const createArticleValidators = [
   createLengthValidator('text')
 ];
 
-const signinValidators = [
+const signupValidators = [
   createLengthValidator('username'),
   createLengthValidator('password')
 ];
@@ -27,5 +27,5 @@ function createLengthValidator(
 
 module.exports = {
   createArticleValidators,
-  signinValidators
+  signupValidators
 };

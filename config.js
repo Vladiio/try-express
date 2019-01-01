@@ -7,7 +7,7 @@ const routes = {
   ARTICLE: '/article/:id/',
   CREATE_ARTICLE: '/article/create',
   UPDATE_ARTICLE: '/article/:id/update',
-  SIGNIN: '/users/signin'
+  signup: '/users/signup'
 };
 
 module.exports = {
