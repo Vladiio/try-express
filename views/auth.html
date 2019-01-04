@@ -1,8 +1,12 @@
 {{> base}}
 
 <div class="w-50 m-auto text-center">
-  <form action="/users/signup" method="post" class="mt-5">
-    <h4>Sign up</h4>
+  <form
+    action="{{ form_action }}"
+    method="post"
+    class="mt-5"
+  >
+    <h4>{{ title }}</h4>
     {{# errors }}
     <p>{{ param }}: {{ msg }}</p>
     {{/ errors}}

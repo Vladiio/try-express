@@ -76,7 +76,10 @@ async function updateArticleHandler(req, res) {
 }
 
 function signupPage(req, res) {
-  res.render('signup.html');
+  res.render('auth.html', {
+    form_action: routes.SIGNUP,
+    title: 'Sign up'
+  });
 }
 
 async function signupHandler(req, res) {
@@ -91,6 +94,13 @@ async function signupHandler(req, res) {
   return res.redirect('/');
 }
 
+function signinPage(req, res) {
+  res.render('auth.html', {
+    form_action: routes.SIGNIN,
+    title: 'Sign in'
+  });
+}
+
 module.exports = {
   home,
   createArticlePage,
@@ -99,5 +109,6 @@ module.exports = {
   updateArticlePage,
   updateArticleHandler,
   signupPage,
-  signupHandler
+  signupHandler,
+  signinPage
 };

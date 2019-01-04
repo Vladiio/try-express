@@ -12,7 +12,8 @@ const {
   articleDetail,
   updateArticleHandler,
   signupHandler,
-  signupPage
+  signupPage,
+  signinPage
 } = require('./controllers');
 
 const router = Router();
@@ -21,7 +22,8 @@ router.get(routes.HOME, home);
 router.get(routes.UPDATE_ARTICLE, updateArticlePage);
 router.get(routes.CREATE_ARTICLE, createArticlePage);
 router.get(routes.ARTICLE, articleDetail);
-router.get(routes.signup, signupPage);
+router.get(routes.SIGNUP, signupPage);
+router.get(routes.SIGNIN, signinPage);
 
 router.post(
   routes.CREATE_ARTICLE,
@@ -34,6 +36,6 @@ router.post(
   updateArticleHandler
 );
 
-router.post(routes.signup, signupValidators, signupHandler);
+router.post(routes.SIGNUP, signupValidators, signupHandler);
 
 module.exports = { router };

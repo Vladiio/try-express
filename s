@@ -33,7 +33,7 @@
 [31m-app.get(routes.UPDATE_ARTICLE, updateArticlePage);[m
 [31m-app.get(routes.CREATE_ARTICLE, createArticlePage);[m
 [31m-app.get(routes.ARTICLE, articleDetail);[m
-[31m-app.get(routes.signup, signupPage);[m
+[31m-app.get(routes.SIGNUP, signupPage);[m
 [31m-[m
 [31m-app.post([m
 [31m-  routes.CREATE_ARTICLE,[m
@@ -46,7 +46,7 @@
 [31m-  updateArticleHandler[m
 [31m-);[m
 [31m-[m
-[31m-app.post(routes.signup, signupValidators, signupHandler);[m
+[31m-app.post(routes.SIGNUP, signupValidators, signupHandler);[m
 [31m-[m
  app.listen(APP_PORT);[m
 [1mdiff --git a/setupApp.js b/setupApp.js[m
