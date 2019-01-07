@@ -6,10 +6,12 @@ const { routes } = require('./config');
 const { Article, User } = require('./models');
 
 function home(req, res) {
+  // console.log(req.locals);
   Article.find((err, articles) => {
     if (err) console.log(err);
     res.render('index.html', {
       count: articles.length,
+      user: req.user,
       articles
     });
   });

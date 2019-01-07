@@ -32,8 +32,14 @@ function setupApp(passport) {
   app.use(bodyParser.json());
   app.use(passport.initialize());
   app.use(passport.session());
-  app.use('/', router);
 
+  app.use((req, res, next) => {
+    res.locals.user = req.user;
+    res.locals.anonymous = !req.user;
+    next();
+  });
+
+  app.use('/', router);
   mongoose.connect(
     'mongodb://localhost/try_node',
     { useNewUrlParser: true }

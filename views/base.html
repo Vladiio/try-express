@@ -45,11 +45,15 @@
           id="navbarNav"
         >
           <ul class="navbar-nav">
+            {{ #user }}
             <li class="nav-item">
               <a class="nav-link" href="/article/create"
                 >Create an article</a
               >
             </li>
+            {{ /user }}
+
+            {{ #anonymous }}
             <li class="nav-item">
               <a class="nav-link" href="/users/signup"
                 >Sign up</a
@@ -60,6 +64,7 @@
                 >Sign in</a
               >
             </li>
+            {{ /anonymous }}
           </ul>
         </div>
       </nav>
