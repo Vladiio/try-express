@@ -2,30 +2,14 @@ const express = require('express');
 const mustachExpress = require('mustache-express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const passport = require('passport');
-const LocalStrategy = require('passport-local');
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
+
 const { TEMPLATES_DIR } = require('./config');
 const { router } = require('./router');
 const { User } = require('./models');
 
-function setupPassort() {
-  passport.use(
-    new LocalStrategy(async function(
-      username,
-      password,
-      done
-    ) {
-      let user = await User.findOne({ username });
-      if (!user.verifyPassword(passport)) {
-        user = false;
-      }
-      return done(null, user);
-    })
-  );
-  return passport;
-}
-
-function setupApp() {
+function setupApp(passport) {
   const app = express();
 
   app.engine(
@@ -36,10 +20,18 @@ function setupApp() {
   app.set('views', __dirname + '/views');
 
   app.use(express.static('static'));
-
+  app.use(cookieParser());
+  app.use(
+    session({
+      secret: 'keyborad cats',
+      resave: false,
+      saveUninitialized: true
+    })
+  );
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
-
+  app.use(passport.initialize());
+  app.use(passport.session());
   app.use('/', router);
 
   mongoose.connect(
@@ -50,4 +42,4 @@ function setupApp() {
   return app;
 }
 
-module.exports = setupApp;
+module.exports = { setupApp };

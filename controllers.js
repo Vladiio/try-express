@@ -85,8 +85,10 @@ function signupPage(req, res) {
 async function signupHandler(req, res) {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res.render('signup.html', {
-      errors: errors.array()
+    return res.render('auth.html', {
+      errors: errors.array(),
+      form_action: routes.SIGNUP,
+      title: 'Sign up'
     });
   }
   const { username, password } = req.body;
@@ -101,6 +103,11 @@ function signinPage(req, res) {
   });
 }
 
+function signinHandler(req, res) {
+  console.log(req.user);
+  res.redirect(routes.HOME);
+}
+
 module.exports = {
   home,
   createArticlePage,
@@ -110,5 +117,6 @@ module.exports = {
   updateArticleHandler,
   signupPage,
   signupHandler,
-  signinPage
+  signinPage,
+  signinHandler
 };
