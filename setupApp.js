@@ -7,7 +7,6 @@ const cookieParser = require('cookie-parser');
 
 const { TEMPLATES_DIR, routes } = require('./config');
 const { router } = require('./router');
-const { User } = require('./models');
 
 function setupApp(passport) {
   const app = express();

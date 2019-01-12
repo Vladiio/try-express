@@ -4,9 +4,9 @@ const APP_PORT = 3000;
 
 const routes = {
   HOME: '/',
-  ARTICLE: '/article/:id/',
-  CREATE_ARTICLE: '/article/create',
-  UPDATE_ARTICLE: '/article/:id/update',
+  ARTICLE: '/articles/:id/',
+  CREATE_ARTICLE: '/articles/create',
+  UPDATE_ARTICLE: '/articles/:id/update',
   SIGNUP: '/users/signup',
   SIGNIN: '/users/signin',
   LOGOUT: '/users/logout'

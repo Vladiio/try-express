@@ -28,7 +28,9 @@
       <nav
         class="navbar navbar-expand-lg navbar-dark bg-dark"
       >
-        <a class="navbar-brand" href="/">VM</a>
+        <a class="navbar-brand" href="{{ routes.HOME }}"
+          >VM</a
+        >
         <button
           class="navbar-toggler"
           type="button"
@@ -47,13 +49,15 @@
           <ul class="navbar-nav">
             {{ #user }}
             <li class="nav-item">
-              <a class="nav-link" href="/article/create"
+              <a
+                class="nav-link"
+                href="{{ routes.CREATE_ARTICLE }}"
                 >Create an article</a
               >
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="/users/logout"
+              <a class="nav-link" href="{{ routes.LOGOUT }}"
                 >Log out</a
               >
             </li>
@@ -62,12 +66,12 @@
 
             {{ #anonymous }}
             <li class="nav-item">
-              <a class="nav-link" href="/users/signup"
+              <a class="nav-link" href="{{ routes.SIGNUP }}"
                 >Sign up</a
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/users/signin"
+              <a class="nav-link" href="{{ routes.SIGNIN }}"
                 >Sign in</a
               >
             </li>
