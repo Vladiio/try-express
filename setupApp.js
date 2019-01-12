@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 
-const { TEMPLATES_DIR } = require('./config');
+const { TEMPLATES_DIR, routes } = require('./config');
 const { router } = require('./router');
 const { User } = require('./models');
 
@@ -36,6 +36,7 @@ function setupApp(passport) {
   app.use((req, res, next) => {
     res.locals.user = req.user;
     res.locals.anonymous = !req.user;
+    res.locals.routes = routes;
     next();
   });
 

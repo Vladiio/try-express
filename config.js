@@ -8,7 +8,8 @@ const routes = {
   CREATE_ARTICLE: '/article/create',
   UPDATE_ARTICLE: '/article/:id/update',
   SIGNUP: '/users/signup',
-  SIGNIN: '/users/signin'
+  SIGNIN: '/users/signin',
+  LOGOUT: '/users/logout'
 };
 
 module.exports = {

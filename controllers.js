@@ -106,7 +106,11 @@ function signinPage(req, res) {
 }
 
 function signinHandler(req, res) {
-  console.log(req.user);
+  res.redirect(routes.HOME);
+}
+
+function logoutHandler(req, res) {
+  req.logout();
   res.redirect(routes.HOME);
 }
 
@@ -120,5 +124,6 @@ module.exports = {
   signupPage,
   signupHandler,
   signinPage,
-  signinHandler
+  signinHandler,
+  logoutHandler
 };
